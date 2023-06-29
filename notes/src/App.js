@@ -18,7 +18,7 @@ const Footer = () => {
 }
 
 const App = () => {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState(null)
   const [newNote, setNewNote] = useState('') 
   const [showAll, setShowall] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -42,8 +42,10 @@ const App = () => {
         setNotes(initialNotes)
       })
   }, [])
-  console.log('render', notes.length, 'notes')
 
+  if (!notes) { 
+    return null 
+  }
 
   const notesToShow = showAll 
     ? notes 
